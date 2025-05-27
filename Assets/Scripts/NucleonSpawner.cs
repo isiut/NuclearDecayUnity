@@ -32,8 +32,8 @@ public class NucleonSpawner : MonoBehaviour
             }
             else
             {
-                Instantiate(neutronPrefab, position, Quaternion.identity);
-                neutronPrefab.transform.localScale = Vector3.one * 0.5f;
+                GameObject neutron = Instantiate(neutronPrefab, position, Quaternion.identity);
+                neutron.transform.localScale = Vector3.one * 0.5f;
                 neutronsSpawned++;
             }
         }
