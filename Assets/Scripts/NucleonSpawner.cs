@@ -1,15 +1,25 @@
 using UnityEngine;
+using TMPro;
 
 public class NucleonSpawner : MonoBehaviour
 {
     public GameObject protonPrefab;
     public GameObject neutronPrefab;
 
+    public TMP_Text aNumberLabel;
+    public TMP_Text zNumberLabel;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         int aNumber = GameData.aNumber;
         int zNumber = GameData.zNumber;
+
+        ElementInfoUpdater elementInfoUpdater = FindFirstObjectByType<ElementInfoUpdater>();
+        if (elementInfoUpdater != null)
+        {
+            elementInfoUpdater.UpdateElementInfo();
+        }
 
         int numberOfProtons = zNumber;
         int numberOfNeutrons = aNumber - zNumber;

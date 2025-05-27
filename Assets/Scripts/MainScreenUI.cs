@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +56,12 @@ public class MainScreenUI : MonoBehaviour
 
         Debug.Log($"After alpha decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
 
+        ElementInfoUpdater elementInfoUpdater = FindFirstObjectByType<ElementInfoUpdater>();
+        if (elementInfoUpdater != null)
+        {
+            elementInfoUpdater.UpdateElementInfo();
+        }
+
         Destroy(particle, 5f);
     }
 
@@ -90,6 +97,12 @@ public class MainScreenUI : MonoBehaviour
         }
 
         Debug.Log($"After beta minus decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
+        ElementInfoUpdater elementInfoUpdater = FindFirstObjectByType<ElementInfoUpdater>();
+        if (elementInfoUpdater != null)
+        {
+            elementInfoUpdater.UpdateElementInfo();
+        }
 
         Destroy(particle, 7f);
     }
@@ -127,6 +140,12 @@ public class MainScreenUI : MonoBehaviour
 
         Debug.Log($"After beta plus decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
 
+        ElementInfoUpdater elementInfoUpdater = FindFirstObjectByType<ElementInfoUpdater>();
+        if (elementInfoUpdater != null)
+        {
+            elementInfoUpdater.UpdateElementInfo();
+        }
+
         Destroy(particle, 7f);
     }
 
@@ -145,6 +164,12 @@ public class MainScreenUI : MonoBehaviour
         }
 
         Debug.Log($"After gamma decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
+        ElementInfoUpdater elementInfoUpdater = FindFirstObjectByType<ElementInfoUpdater>();
+        if (elementInfoUpdater != null)
+        {
+            elementInfoUpdater.UpdateElementInfo();
+        }
 
         Destroy(particle, 5f);
     }
