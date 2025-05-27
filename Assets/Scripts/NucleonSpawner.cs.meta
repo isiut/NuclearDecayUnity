@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: f20de553bbb55bf439c88b0d7a398c80
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - protonPrefab: {fileID: 4834150916631582749, guid: 03707d4e539340f4f8b87829bbd21b4d, type: 3}
+  - neutronPrefab: {fileID: 1103639926700078522, guid: 754ad7f108686e047942fdd5018d8408, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
