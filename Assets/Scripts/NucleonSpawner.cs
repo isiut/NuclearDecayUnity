@@ -8,14 +8,18 @@ public class NucleonSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        int numberOfProtons = GameData.protonCount;
-        int numberOfNeutrons = GameData.neutronCount;
+        int aNumber = GameData.aNumber;
+        int zNumber = GameData.zNumber;
+
+        int numberOfProtons = zNumber;
+        int numberOfNeutrons = aNumber - zNumber;
+
+        Debug.Log($"Spawning {numberOfProtons} protons and {numberOfNeutrons} neutrons for A={aNumber}, Z={zNumber}");
 
         int protonsSpawned = 0;
         int neutronsSpawned = 0;
-        int totalNucleons = numberOfProtons + numberOfNeutrons;
 
-        for (int i = 0; i < totalNucleons; i++)
+        for (int i = 0; i < aNumber; i++)
         {
             Vector3 position = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), Random.Range(-5f, 5f));
 

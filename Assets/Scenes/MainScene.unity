@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20de553bbb55bf439c88b0d7a398c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfProtons: 92
-  numberOfNeutrons: 238
   protonPrefab: {fileID: 4834150916631582749, guid: 03707d4e539340f4f8b87829bbd21b4d, type: 3}
   neutronPrefab: {fileID: 1103639926700078522, guid: 754ad7f108686e047942fdd5018d8408, type: 3}
 --- !u!4 &571549
@@ -203,8 +201,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

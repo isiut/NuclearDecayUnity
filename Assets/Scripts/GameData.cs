@@ -2,6 +2,6 @@ using UnityEngine;
 
 public class GameData
 {
-    public static int protonCount;
-    public static int neutronCount;
+    public static int aNumber;
+    public static int zNumber;
 }

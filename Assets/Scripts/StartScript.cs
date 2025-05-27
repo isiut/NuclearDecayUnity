@@ -6,29 +6,29 @@ using UnityEngine.UI;
 
 public class StartScript : MonoBehaviour
 {
-    public TMP_InputField protonInputField;
-    public TMP_InputField neutronInputField;
+    public TMP_InputField aInputField;
+    public TMP_InputField zInputField;
 
     public TMP_Text errorText;
 
     public void startGame()
     {
-        string protonText = protonInputField.text;
-        string neutronText = neutronInputField.text;
+        string aText = aInputField.text;
+        string zText = zInputField.text;
 
-        int protonCount = int.Parse(protonText);
-        int neutronCount = int.Parse(neutronText);
+        int aNumber = int.Parse(aText);
+        int zNumber = int.Parse(zText);
 
-        bool isValidNucleon = protonCount > 0 && neutronCount >= 0 && protonCount <= 118 && neutronCount <= 300;
+        bool isValidNucleon = aNumber > 0 && zNumber > 0 && aNumber <= 300 && zNumber <= 118 && aNumber >= zNumber;
 
         if (!isValidNucleon)
         {
-            errorText.text = "Invalid nucleon count.";
+            errorText.text = "Invalid nucleon counts.";
         }
         else
         {
-            GameData.protonCount = protonCount;
-            GameData.neutronCount = neutronCount;
+            GameData.aNumber = aNumber;
+            GameData.zNumber = zNumber;
 
             SceneManager.LoadScene("MainScene");
         }
