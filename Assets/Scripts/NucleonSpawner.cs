@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class NucleonSpawner : MonoBehaviour
 {
-    [Tooltip("Number of nucleons to spawn.")]
-    public int numberOfProtons = 20;
-    public int numberOfNeutrons = 20;
-
     public GameObject protonPrefab;
     public GameObject neutronPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        int numberOfProtons = GameData.protonCount;
+        int numberOfNeutrons = GameData.neutronCount;
+
         int protonsSpawned = 0;
         int neutronsSpawned = 0;
         int totalNucleons = numberOfProtons + numberOfNeutrons;
