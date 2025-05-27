@@ -7,6 +7,8 @@ public class MainScreenUI : MonoBehaviour
     public GameObject betaMinusParticlePrefab;
     public GameObject betaPlusParticlePrefab;
     public GameObject gammaParticlePrefab;
+    public GameObject protonPrefab;
+    public GameObject neutronPrefab;
 
     public void back()
     {
@@ -14,6 +16,7 @@ public class MainScreenUI : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
+    // TODO: Make decay modes non-selectable when they are impossible
     public void alpha()
     {
         Debug.Log("Alpha decay selected.");
@@ -28,6 +31,30 @@ public class MainScreenUI : MonoBehaviour
                 Random.Range(-5f, 5f)
             );
         }
+
+        // Remove 2 protons and 2 neutrons from the atom
+        GameData.aNumber -= 4;
+        GameData.zNumber -= 2;
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (GameData.protons.Count > 0)
+            {
+                var lastProton = GameData.protons[^1];
+                GameData.protons.RemoveAt(GameData.protons.Count - 1);
+                Destroy(lastProton);
+            }
+
+            if (GameData.neutrons.Count > 0)
+            {
+                var lastNeutron = GameData.neutrons[^1];
+                GameData.neutrons.RemoveAt(GameData.neutrons.Count - 1);
+                Destroy(lastNeutron);
+            }
+        }
+
+        Debug.Log($"After alpha decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
         Destroy(particle, 5f);
     }
 
@@ -45,6 +72,25 @@ public class MainScreenUI : MonoBehaviour
                 Random.Range(-10f, 10f)
             );
         }
+
+        // Transform a neutron into a proton
+        if (GameData.neutrons.Count > 0)
+        {
+            var neutron = GameData.neutrons[^1];
+            GameData.neutrons.RemoveAt(GameData.neutrons.Count - 1);
+            Destroy(neutron);
+
+            if (protonPrefab != null)
+            {
+                GameObject newProton = Instantiate(protonPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                newProton.transform.localScale = Vector3.one * 0.5f;
+                GameData.protons.Add(newProton);
+            }
+            GameData.zNumber += 1;
+        }
+
+        Debug.Log($"After beta minus decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
         Destroy(particle, 7f);
     }
 
@@ -62,6 +108,25 @@ public class MainScreenUI : MonoBehaviour
                 Random.Range(-10f, 10f)
             );
         }
+
+        // Transform a proton into a neutron
+        if (GameData.protons.Count > 0)
+        {
+            var proton = GameData.protons[^1];
+            GameData.protons.RemoveAt(GameData.protons.Count - 1);
+            Destroy(proton);
+
+            if (neutronPrefab != null)
+            {
+                GameObject newNeutron = Instantiate(neutronPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                newNeutron.transform.localScale = Vector3.one * 0.5f;
+                GameData.neutrons.Add(newNeutron);
+            }
+            GameData.zNumber -= 1;
+        }
+
+        Debug.Log($"After beta plus decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
         Destroy(particle, 7f);
     }
 
@@ -78,6 +143,9 @@ public class MainScreenUI : MonoBehaviour
                 Random.Range(-15f, 15f)
             );
         }
+
+        Debug.Log($"After gamma decay: A = {GameData.aNumber}, Z = {GameData.zNumber}");
+
         Destroy(particle, 5f);
     }
 }

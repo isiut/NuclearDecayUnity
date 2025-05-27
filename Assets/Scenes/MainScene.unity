@@ -1342,6 +1342,8 @@ MonoBehaviour:
   betaMinusParticlePrefab: {fileID: 4063266346653114428, guid: a0271c53dd4d3024ea6bc9fa19513c09, type: 3}
   betaPlusParticlePrefab: {fileID: 1851949510065841492, guid: 7bb797afe0d6d8b499cd75277832a9bb, type: 3}
   gammaParticlePrefab: {fileID: 5242983091451601737, guid: 08fe7ac1b51053845be05a8bce0a68ea, type: 3}
+  protonPrefab: {fileID: 4834150916631582749, guid: 03707d4e539340f4f8b87829bbd21b4d, type: 3}
+  neutronPrefab: {fileID: 5065596182324230617, guid: 754ad7f108686e047942fdd5018d8408, type: 3}
 --- !u!114 &708579653
 MonoBehaviour:
   m_ObjectHideFlags: 0

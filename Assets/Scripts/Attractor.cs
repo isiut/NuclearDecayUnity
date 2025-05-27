@@ -25,16 +25,7 @@ public class Attractor : MonoBehaviour
 
         float elapsedTime = Time.time - startTime;
 
-        if (elapsedTime - startTime < settleTime)
-        {
-            // Apply force toward center
-            Vector3 force = directionToCenter.normalized * attractionForce;
-            rb.AddForce(force, ForceMode.Acceleration);
-        }
-        else
-        {
-            // Optionally dampen velocity to settle at center
-            rb.linearVelocity = Vector3.zero;
-        }
+        Vector3 force = directionToCenter.normalized * attractionForce;
+        rb.AddForce(force, ForceMode.Acceleration);
     }
 }

@@ -19,6 +19,12 @@ public class NucleonSpawner : MonoBehaviour
         int protonsSpawned = 0;
         int neutronsSpawned = 0;
 
+        // Ensure GameData lists are initialized
+        if (GameData.protons == null)
+            GameData.protons = new System.Collections.Generic.List<GameObject>();
+        if (GameData.neutrons == null)
+            GameData.neutrons = new System.Collections.Generic.List<GameObject>();
+
         for (int i = 0; i < aNumber; i++)
         {
             Vector3 position = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), Random.Range(-5f, 5f));
@@ -28,12 +34,14 @@ public class NucleonSpawner : MonoBehaviour
             {
                 GameObject proton = Instantiate(protonPrefab, position, Quaternion.identity);
                 proton.transform.localScale = Vector3.one * 0.5f;
+                GameData.protons.Add(proton);
                 protonsSpawned++;
             }
             else
             {
                 GameObject neutron = Instantiate(neutronPrefab, position, Quaternion.identity);
                 neutron.transform.localScale = Vector3.one * 0.5f;
+                GameData.neutrons.Add(neutron);
                 neutronsSpawned++;
             }
         }
@@ -42,6 +50,6 @@ public class NucleonSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
