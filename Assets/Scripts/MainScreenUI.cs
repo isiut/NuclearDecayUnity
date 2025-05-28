@@ -11,6 +11,8 @@ public class MainScreenUI : MonoBehaviour
     public GameObject protonPrefab;
     public GameObject neutronPrefab;
 
+    public TMP_Text decayErrorLabel;
+
     public void back()
     {
         Debug.Log("Back button pressed. Returning to the previous screen.");
@@ -21,6 +23,13 @@ public class MainScreenUI : MonoBehaviour
     public void alpha()
     {
         Debug.Log("Alpha decay selected.");
+
+        if (GameData.aNumber < 5 || GameData.zNumber < 3)
+        {
+            decayErrorLabel.text = "α decay not possible";
+            return;
+        }
+        decayErrorLabel.text = "";
 
         GameObject particle = Instantiate(alphaParticlePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Rigidbody rb = particle.GetComponent<Rigidbody>();
@@ -69,6 +78,13 @@ public class MainScreenUI : MonoBehaviour
     {
         Debug.Log("Beta-minus decay selected.");
 
+        if (GameData.aNumber - GameData.zNumber < 1)
+        {
+            decayErrorLabel.text = "β- decay not possible";
+            return;
+        }
+        decayErrorLabel.text = "";
+
         GameObject particle = Instantiate(betaMinusParticlePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Rigidbody rb = particle.GetComponent<Rigidbody>();
         if (rb != null)
@@ -110,6 +126,13 @@ public class MainScreenUI : MonoBehaviour
     public void betaPlus()
     {
         Debug.Log("Beta-plus decay selected.");
+
+        if (GameData.zNumber < 2)
+        {
+            decayErrorLabel.text = "β+ decay not possible";
+            return;
+        }
+        decayErrorLabel.text = "";
 
         GameObject particle = Instantiate(betaPlusParticlePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Rigidbody rb = particle.GetComponent<Rigidbody>();
